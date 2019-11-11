@@ -2,7 +2,7 @@ var express = require("express");
 
 var router = express.Router();
 
-var burger = require("../models/burger.js");
+var burger = require("../models/burger");
 
 router.get("/", function(req, res) {
   burger.all(function(data) {
@@ -16,9 +16,9 @@ router.get("/", function(req, res) {
 
 router.post("/api/burgers", function(req, res) {
   burger.create([
-    "burger_name", "devour"
+    "burger_name", "devoured"
   ], [
-    req.body.burger_name, req.body.devour
+    req.body.burger_name, req.body.devoured
   ], function(result) {
     // Send back the ID of the new quote
     res.json({ id: result.insertId });
@@ -30,9 +30,9 @@ router.put("/api/burgers/:id", function(req, res) {
 
   console.log("condition", condition);
 
-  burger.update({
-    devour: req.body.devour
-  }, condition, function(result) {
+  burger.update(
+    {devoured: req.body.devoured}, 
+    condition, function(result) {
     if (result.changedRows == 0) {
       // If no rows were changed, then the ID must not exist, so 404
       return res.status(404).end();
@@ -41,15 +41,15 @@ router.put("/api/burgers/:id", function(req, res) {
     }
   });
 });
-
-router.delete("/api/devour/:id", function(req, res){
+//
+router.delete("/api/devoured/:id", function(req, res){
   var condition = "id = " + req.params.id;
 
   burger.delete(condition, function(result){
     console.log(result);
 
     //affectedRow here because it's not just changed bc it is deleted. Rather it's affected. As oppose to line(38).
-    if (result.affectedRows == 0) {
+    if (result.changedRows == 0) {
       // If no rows were changed, then the ID must not exist, so 404
       return res.status(404).end();
     } else {
