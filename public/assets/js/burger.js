@@ -21,7 +21,7 @@ $(function () {
         // console.log("#burger_name");
         event.preventDefault();
 
-        var name = $("[name=burger-name]").val().trim()
+        var name = $("[name=burger_name]").val().trim()
 
         if (name !== "") {
             var newBurger = {
