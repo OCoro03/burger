@@ -41,7 +41,7 @@ $(function () {
         //     devoured: 0
         // };
         else {
-            $("[name=burger-name]").val("");
+            $("[name=burger_name]").val("");
         }
 
     });
