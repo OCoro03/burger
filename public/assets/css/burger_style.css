@@ -1,0 +1,42 @@
+* {
+	box-sizing: border-box;
+}
+
+body {
+	position: relative;
+	font-family: 'Georigia';
+	font-size: large;
+	background-color: yellow
+}
+
+h1 {
+	color: red;
+	font-size: x-large;
+}
+
+#page-name {
+	text-align: center;
+	margin: 30px 0;
+}
+
+.col-left {
+	padding-left: 20%;
+}
+
+.col-right {
+	text-align: left;
+}
+
+.table-first-col {
+	width: 270px;
+}
+
+td {
+    height: 50px;
+    vertical-align: center;
+}
+
+.create-form {
+	margin-top: 50px;
+	text-align: center;
+}    

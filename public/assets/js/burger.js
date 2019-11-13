@@ -1,44 +1,58 @@
 $(function () {
-    $(".create-form").on("submit", function (event) {
-        event.preventDefault();
-
-        var newBurger = {
-            burger_name: $("#burger_name").val().trim(),
-            devoured: 0
-        };
-
-        $.ajax("/api/burgers", {
-            type: "POST",
-            data: newBurger
-        }).then(function () {
-            console.log("New Burger Added");
-            location.reload();
-        });
-    });
-    $(".eatburger").on("click", function (event) {
-        event.preventDefault();
+    $(".change-devour").on("click", function (event) {
+        // event.preventDefault();
 
         var id = $(this).data("id")
-        var devoured = {
-            devoured: 1
-        }
+
+        var newState = {
+            devoured: true
+        };
+
         $.ajax("/api/burgers/" + id, {
-            type: PushSubscription,
-            data: devoured
+            type: "PUT",
+            data: newState
         }).then(function () {
             console.log("Burger has been DEVOURED!");
             location.reload();
         });
     });
 
-    $(".trashburger").on("click", function (event) {
+    $(".create-form").on("submit", function (event) {
+        // console.log("#burger_name");
         event.preventDefault();
 
-        var id = $(this).data("id");
+        var name = $("[name=burger-name]").val().trim()
 
-        $.ajax({
-            type: "DELETE",
-            url: "/api/burgers/" + id
-        }).then(location.reload());
-    })
+        if (name !== "") {
+            var newBurger = {
+                name: name
+            };
+
+            $.ajax("/api/burgers", {
+                type: "POST",
+                data: newBurger
+            }).then(function () {
+                console.log("New Burger Added");
+                location.reload();
+            });
+        }
+        // var newBurger = {
+        //     burger_name: $("#burger_name").val().trim(),
+        //     devoured: 0
+        // };
+        else {
+            $("[name=burger-name]").val("");
+        }
+
+    });
+    // $(".devoured").on("click", function (event) {
+    //     event.preventDefault();
+
+    //     var id = $(this).data("id");
+
+    //     $.ajax({
+    //         type: "DELETE",
+    //         url: "/api/burgers/" + id
+    //     }).then(location.reload());
+    // })
 })

@@ -1,5 +1,5 @@
 // Import MySQL connection.
-var connection = require("../config/connection");
+var connection = require("../config/connection.js");
 
 // ["?", "?", "?"].toString() => "?,?,?";
 function printQuestionMarks(num) {
@@ -85,13 +85,13 @@ var orm = {
     });
   },
   delete: function(table_name, condition, cb){
-    // var queryString = "DELETE FROM " + table_name + " WHERE " + condition;
+    var queryString = "DELETE FROM " + table_name + " WHERE " + condition;
 
     //Lines (94-97) Same thing as line above.
-    var queryString = "DELETE FROM ";
-    queryString += table_name;
-    queryString += "WHERE ";
-    queryString += condition;
+    // var queryString = "DELETE FROM ";
+    // queryString += table_name;
+    // queryString += "WHERE ";
+    // queryString += condition;
     
     connection.query(queryString, function(err, results){
       if(err) throw err;
