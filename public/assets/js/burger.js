@@ -17,21 +17,21 @@ $(function () {
         });
     });
 
-    $(".create-form").on("submit", function (event) {
+    $("#burger-me-up-scotty").on("click", function (event) {
         // console.log("#burger_name");
         event.preventDefault();
 
-        var name = $("[name=burger_name]").val().trim()
+        var name = $("#name").val();
+        console.log(name)
 
         if (name !== "") {
             var newBurger = {
-                name: name
+                burger_name: name,
+                devoured: 0
             };
 
-            $.ajax("/api/burgers", {
-                type: "POST",
-                data: newBurger
-            }).then(function () {
+            $.post("/api/burgers", newBurger
+            ).then(function () {
                 console.log("New Burger Added");
                 location.reload();
             });
@@ -45,14 +45,5 @@ $(function () {
         }
 
     });
-    // $(".devoured").on("click", function (event) {
-    //     event.preventDefault();
-
-    //     var id = $(this).data("id");
-
-    //     $.ajax({
-    //         type: "DELETE",
-    //         url: "/api/burgers/" + id
-    //     }).then(location.reload());
-    // })
+    
 })
