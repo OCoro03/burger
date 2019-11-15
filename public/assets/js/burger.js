@@ -40,10 +40,6 @@ $(function () {
         //     burger_name: $("#burger_name").val().trim(),
         //     devoured: 0
         // };
-        else {
-            $("[name=burger_name]").val("");
-        }
-
     });
     
 })
