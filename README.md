@@ -7,3 +7,5 @@ This Burger app is a fun interaction between the user and adding a burger to the
 * Handlebars.js
 * MySQL Workbench
 * Express
+
+<img width="1278" alt="Screen Shot 2019-11-15 at 3 56 40 AM" src="https://user-images.githubusercontent.com/54198484/68934736-dcbd4a80-075c-11ea-88d5-894e5e0b4dff.png">
